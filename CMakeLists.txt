@@ -56,10 +56,7 @@ endif()
 if(UTEST)
 	include(CTest)
 	enable_testing()
-	### Options for compile unitary tests with cpputest
-#	option(TESTS "Compile and make tests for the code?" OFF)
-#	option(TESTS_DETAILED "Run each test separately instead of grouped?" OFF)
-#	option(C++11 "Compile with C++11 support" ON)
 	add_subdirectory("${PROJECT_SOURCE_DIR}/vendor/unity")
-#	add_subdirectory(tests)
 endif()
+
+add_subdirectory(lib)

@@ -5,6 +5,12 @@ Example project for build Unity + Fake Function Framework unitary tests with CMa
 
 ### Unity
 
+Unity test framework is added to the git repo as a git submodule, so **remember to clone this repository with the `--recurse-submodules` option.**
+
+```console
+$ git submodule add https://github.com/ThrowTheSwitch/Unity.git ./vendor/unity
+```
+
 ### Fake Function Framework (FFF)
 
 ### Valgrind

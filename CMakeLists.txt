@@ -39,6 +39,7 @@ if(UTEST)
 	include(CTest)
 	enable_testing()
 	add_subdirectory("${PROJECT_SOURCE_DIR}/vendor/unity")
+	add_subdirectory("${PROJECT_SOURCE_DIR}/vendor/fff")
 endif()
 
 add_subdirectory(lib)

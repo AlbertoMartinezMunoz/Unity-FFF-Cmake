@@ -1,3 +1,6 @@
 [submodule "vendor/unity"]
 	path = vendor/unity
 	url = https://github.com/ThrowTheSwitch/Unity.git
+[submodule "vendor/fff"]
+	path = vendor/fff
+	url = https://github.com/meekrosoft/fff.git

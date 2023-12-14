@@ -1,8 +1,7 @@
 # module
 add_library(module ../src/module.c)  
 target_include_directories(module PUBLIC ../include)
-target_include_directories(module PUBLIC ../../module_mockable/include)
-target_link_libraries(module fff)
+target_link_libraries(module module_mockable fff)
 
 # test_module
 add_executable(test_module test_module.c)

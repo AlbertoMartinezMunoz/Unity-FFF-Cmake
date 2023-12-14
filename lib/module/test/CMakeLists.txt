@@ -1,10 +1,5 @@
-# module
-add_library(module ../src/module.c)  
-target_include_directories(module PUBLIC ../include)
-target_link_libraries(module module_mockable fff)
-
 # test_module
 add_executable(test_module test_module.c)
-target_link_libraries(test_module unity module)   
+target_link_libraries(test_module unity fff module)   
 add_test(NAME test_module COMMAND test_module)
 set_target_properties(test_module PROPERTIES FOLDER test)

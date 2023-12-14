@@ -88,7 +88,7 @@ int main(void)
 
 Then, we will create a `CMakeList.txt` in the test folder which will define the build of the tests.
 
-First, we will create a library with the code to be tested
+The code we are going to test is defined as a library in the module's CMakeLists.txt file
 
 ```cmake
 add_library(module ../src/module.c)  
@@ -106,16 +106,31 @@ set_target_properties(test_module PROPERTIES FOLDER test)
 
 ### Adding Mocks
 
-First, when creating the library with the code to be tested in CMakeLists.txt, we have to add also the `fff` lib.
+The code we are going to mock is defined as a library (module_mockable) in the mockable module's CMakeLists.txt file
 
 ```cmake
-add_library(module ../src/module.c)  
-target_include_directories(module PUBLIC ../include)
-target_include_directories(module PUBLIC ../../module_mockable/include)
-target_link_libraries(module fff)
+add_library(module_mockable src/module_mockable.c)  
+target_include_directories(module_mockable PUBLIC include)
 ```
 
-Then in the testing code, we have to include the `fff`library and define the mock we are going to use.
+This code is linked in the module we are testing
+
+```cmake
+add_library(module src/module.c)  
+target_include_directories(module PUBLIC include)
+target_link_libraries(module module_mockable)
+```
+
+Then, when creating the test in CMakeLists.txt, we have to add also the `fff` lib.
+
+```cmake
+add_executable(test_module test_module.c)
+target_link_libraries(test_module unity fff module)   
+add_test(NAME test_module COMMAND test_module)
+set_target_properties(test_module PROPERTIES FOLDER test)
+```
+
+In the testing code, we have to include the `fff`library and define the mocks we are going to use.
 
 ```c
 #include "fff.h"
